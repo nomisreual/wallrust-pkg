@@ -5,7 +5,7 @@
     ...
   }: {
     packages.default = pkgs.rustPlatform.buildRustPackage (finalAttrs: {
-      pname = "wallrust";
+      pname = "wallust";
       version = "v1.0.5";
 
       src = pkgs.fetchFromGitHub {
