@@ -5,7 +5,7 @@
     ...
   }: {
     packages.default = pkgs.rustPlatform.buildRustPackage (finalAttrs: {
-      pname = "wallust";
+      pname = "wallrust";
       version = "v1.0.5";
 
       src = pkgs.fetchFromGitHub {
@@ -16,6 +16,11 @@
       };
 
       cargoHash = "sha256-R2RjWCDUh60LN7gy4oWqBEDFft07jY3J654MpAnv/es";
+
+      # "Fix": wayle looks for a binary called wallust
+      postInstall = ''
+        ln -s $out/bin/wallrust $out/bin/wallust
+      '';
 
       meta = {
         description = "💥 A blazingly fast and feature-rich tool to auto theme and rice everything! based on wallpaper/image colors | written in Rust";
